@@ -1,4 +1,4 @@
-
+<form action="">
   <ion-content>
     <div class="login-section ion-padding">
       <div class="heading ion-padding">
@@ -9,13 +9,13 @@
         <div class="form-input">
           <ion-icon name="person-outline"></ion-icon>
           <ion-item>
-            <ion-input type="text" placeholder="Usuario" [(ngModel)]="nombre"> </ion-input>
+            <ion-input type="text" placeholder="Usuario" [(ngModel)]="nombre" name="nombre"> </ion-input>
           </ion-item>
         </div>
         <div class="form-input">
           <ion-icon name="lock-closed-outline"></ion-icon>
           <ion-item>
-            <ion-input type="password" placeholder="Contraseña" [(ngModel)]="contra"> </ion-input>
+            <ion-input type="password" placeholder="Contraseña" [(ngModel)]="contra" name="Contraseña"> </ion-input>
           </ion-item>
         </div>
       </div>
@@ -23,7 +23,8 @@
         <ion-button size="large" class="login-button" type="submit"> Ingresar </ion-button>
         <p>No tienes cuenta?</p>
         <ion-button class="signup-button" size="large" fill="outline" (click)="irRegistro()">Registrarse</ion-button>
+        <a href=""> Recuperar Contraseña</a>
       </div>
     </div>
   </ion-content>
- 
+</form> 
