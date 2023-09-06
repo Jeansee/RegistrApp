@@ -12,6 +12,8 @@ export class LoginPage {
 
   nombre = '';
   contra = '';
+  nuevaContrasena ='';
+  confirmarContrasena = '';
 
 
   iniciarSesion() {
@@ -38,5 +40,29 @@ export class LoginPage {
     this.router.navigate(['/registro']);
   }
 
+  recuperarContrasena(){
+    //navega a la página d recuperar para tener una nueva contraseña
+    this.router.navigate(['/recuperar']);
+  }
+
+  // Ejemplo de depuración
+resetContrasena() {
+  console.log('Nueva contraseña:', this.nuevaContrasena);
+  console.log('Confirmar contraseña:', this.confirmarContrasena);
+
+  if (this.nuevaContrasena === this.confirmarContrasena) {
+    console.log('Contraseñas coinciden');
+    this.userService.updatePassword(this.nombre, this.nuevaContrasena);
+    console.log('Contraseña actualizada');
+
+    // Redirige a la página de inicio de sesión después del restablecimiento
+    this.router.navigate(['/login']);
+  } else {
+    console.log('Las contraseñas no coinciden');
+  }
+}
+
+
+  
 }
 

@@ -9,10 +9,12 @@ export class UserService {
 
   constructor() { }
 
+  //agregar un usuario
   addUser(username: string, password: string) {
     this.users.push({ username, password });
   }
 
+  //obtener un usuario por nombre
   getUser(username: string) {
     return this.users.find((user) => user.username === username);
   }
@@ -25,5 +27,13 @@ export class UserService {
   // Método para recuperar el nombre de usuario
   getLoggedInUser() {
     return this.loggedInUser;
+  }
+
+  // Actualizar la contraseña de un usuario por el nombre q ponga
+  updatePassword(nombre: string, nuevaContrasena: string){
+    const user = this.getUser(nombre);
+    if(user){
+      user.password = nuevaContrasena;
+    }
   }
 }
