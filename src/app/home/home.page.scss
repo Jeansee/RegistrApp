@@ -1,4 +1,16 @@
+ion-button{
+  text-align: center;
+}
+
+img{
+  width: 250px;
+}
+
+/** TAMAÑO Y DISEÑO DE LA CARD**/
 ion-card{
+  width: 60%;  
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /** TITULO BIENVENIDO **/
