@@ -1,3 +1,24 @@
+ion-card{
+}
+
+/** TITULO BIENVENIDO **/
+h1{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+}
+
+/* COLOR DEL HEADER */
+ion-toolbar{
+  background-color: var(--ion-color-mycolor);
+}
+
+/* FOOTER DISEÑO */
+.ion-footer1{
+  text-align: center;
+  color:rgb(255, 255, 255);
+  background-color:rgb(33, 41, 114);
+}
+
 #container {
   text-align: center;
 
