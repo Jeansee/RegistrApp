@@ -1,8 +1,7 @@
 img{
-    width: 85%x;
-    height: 90px;
+    width: 100%;
+    height: 60%;
 }
-
 ion-content{
     --background: linear-gradient (0deg, rgba(0,0,0,0.7), rgba(0,0,0,0.1))
 }
@@ -64,28 +63,19 @@ ion-content{
 
     .action-buttons{
         text-align: center;
-        .login-button{
-            --background: #f9b801;
-            width: 100%;
-            font-weight: bold;
-        }
         p{
             margin-top: 15px;
             font-size: 1rem;
             color: #7b7b7b;
         }
-        .signup-button{
-            --border-color: blue;
+        .register-button{
+            border-color: blue;
             -color: #000000;
             font-weight: bold;
             margin-top: 3px;
             width: 100%;
             color: white;
-            background-color: blue;
+            background-color:#002957;
         }
-    }
-
-    .boton{
-        margin-left: -20px;
     }
 }

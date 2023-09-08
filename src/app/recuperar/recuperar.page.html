@@ -1,31 +1,40 @@
-<ion-buttons class="boton" slot="start">
-    <ion-back-button defaultHref="/login"> </ion-back-button>
-  </ion-buttons>
-<ion-header>
-    <ion-toolbar>
-        <ion-title>Nueva Contraseña</ion-title>
-    </ion-toolbar>
-</ion-header>
-
 <ion-content>
-    <ion-item>
-        <ion-label position="floating">Usuario</ion-label>
-        <ion-input type="text" [(ngModel)]="nombre"></ion-input>
-    </ion-item>
-
-    <ion-item>
-        <ion-label position="floating">Nueva Contraseña</ion-label>
-        <ion-input type="password" [(ngModel)]="nuevaContrasena"></ion-input>
-    </ion-item>
-
-    <ion-item>
-        <ion-label position="floating">Confirmar nueva Contraseña</ion-label>
-        <ion-input type="password" [(ngModel)]="confirmarContrasena"></ion-input>
-    </ion-item>
-
-    <ion-button expand="full" (click)="resetContrasena()">Restablecer Contraseña</ion-button>
+    <img src="assets/icon/LOGITO.png"/>
 </ion-content>
 
-<ion-footer>
-    <img src="assets/icon/logoduoc.png"/>
-</ion-footer>
+<form action="">
+    <ion-content>
+        <div class="login-section ion-padding">
+            <div class="heading ion-padding">
+                <ion-buttons class="boton" slot="start">
+                    <ion-back-button defaultHref="/login"> </ion-back-button>
+                </ion-buttons>
+                <h1>Bienvenido a RegistrApp</h1>
+                <p>Restablecer Contraseña</p>
+            </div>
+            <div class="login-form ion-padding">
+                <div class="form-input">
+                    <ion-icon name="person-outline"></ion-icon>
+                    <ion-item>
+                        <ion-input type="text" placeholder="Usuario" [(ngModel)]="nombre" name="nombre"></ion-input>
+                    </ion-item>
+                </div>
+                <div class="form-input">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <ion-item>
+                        <ion-input type="password" [(ngModel)]="nuevaContrasena" name="Contraseña" placeholder="Ingresar Contraseña"></ion-input>
+                    </ion-item>
+                    <div class="form-input">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <ion-item>
+                            <ion-input type="password" [(ngModel)]="confirmarContrasena" placeholder="Confirmar contraseña" name="recuperar"></ion-input>
+                        </ion-item>
+                    </div>
+                </div>
+            </div>
+            <div class="action-buttons ion-padding">
+                <ion-button expand="full" (click)="resetContrasena()">Restablecer Contraseña</ion-button>
+            </div>
+        </div>
+    </ion-content>
+</form>
