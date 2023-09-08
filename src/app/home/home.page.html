@@ -1,36 +1,104 @@
-<ion-buttons class="boton" slot="start">
-    <ion-back-button defaultHref="/login"> </ion-back-button>
-</ion-buttons>
-<ion-header>
-    <ion-toolbar color="mycolor">
-        <ion-title>Home</ion-title>
-    </ion-toolbar>
-</ion-header>
-
 <ion-content>
-    <ion-label>
-        <br>
-        <h1>Bienvenido/a {{nombreUsuario}} </h1>
-        <br>
-    </ion-label>
+    <div class="main_content_div">
+        <ion-buttons slot="start" class="menu_btn">
+            <ion-menu-button color="light">
 
-    <ion-card>
-        <img src="assets/icon/codqr.JPG" />
-        <ion-card-header>
-            <ion-card-title>QR RegistrAPP:</ion-card-title>
-            <ion-card-subtitle>Escanea tú código aquí!</ion-card-subtitle>
-        </ion-card-header>
-    </ion-card>
-    <br>
-    <ion-button color="success">Escanear</ion-button>
+            </ion-menu-button>
+        </ion-buttons>
 
+        <div class="user_div">
+            <div class="first_div">
+                <ion-label class="welcome">
+                    Bienvenido
+                </ion-label>
+                <ion-label class="nombre">
+                    {{nombreUsuario}}
+                </ion-label>
+            </div>
+            <div class="user_back" [style.backgroundImage]="'url(assets/icon/usuario.png)'">
+            </div>
+        </div>
+        <div class="content_div animated bounceInUp">
+            <ion-label class="hello_lbl">
+                Bienvenido a RegistrApp
+            </ion-label>
+
+            <ion-grid fixed>
+                <ion-row>
+                    <div class="col_div">
+                        <a (click)="irqr()"><img src="assets/icon/descarga.png"></a>
+                        <ion-label>Crear qr</ion-label>
+                    </div>
+                    <div class="col_div">
+                        <img src="assets/icon/asistencia.png">
+                        <ion-label>Horario</ion-label>
+                    </div>
+
+                    <div class="col_div">
+                        <img src="assets/icon/horario.jpg">
+                        <ion-label>Asistencia</ion-label>
+                    </div>
+                </ion-row>
+            </ion-grid>
+
+            <ion-grid fixed>
+                <ion-row>
+                    <div class="col_div">
+                        <img src="assets/icon/ajustes.png">
+                        <ion-label>Ajustes</ion-label>
+                    </div>
+
+                    <div class="col_div">
+                        <img src="assets/icon/scaner.jpg">
+                        <ion-label>Scaner</ion-label>
+                    </div>
+                    
+                    <div class="col_div">
+                        <img src="assets/icon/noti.jpg">
+                        <ion-label>Notificaciones</ion-label>
+                    </div>
+                </ion-row>
+            </ion-grid>
+
+            <ion-grid fixed>
+                <ion-row>
+                    <div class="col_div">
+                        <img src="assets/icon/descarga.png">
+                        <ion-label>Prox.</ion-label>
+                    </div>
+
+                    <div class="col_div">
+                        <img src="assets/icon/descarga.png">
+                        <ion-label>Prox.</ion-label>
+                    </div>
+
+                    <div class="col_div">
+                        <img src="assets/icon/descarga.png">
+                        <ion-label>Prox.</ion-label>
+                    </div>
+                </ion-row>
+            </ion-grid>
+
+            <ion-grid fixed>
+                <ion-row>
+                    <div class="col_div">
+                        <img src="assets/icon/descarga.png">
+                        <ion-label>Prox.</ion-label>
+                    </div>
+
+                    <div class="col_div">
+                        <img src="assets/icon/descarga.png">
+                        <ion-label>Prox.</ion-label>
+                    </div>
+
+                    <div class="col_div">
+                        <a (click)="irlogin()"><img src="assets/icon/salir.png"></a>
+                        <ion-label>Cerrar Sesion</ion-label>
+                    </div>
+                </ion-row>
+            </ion-grid>
+        </div>
+
+
+    </div>
 </ion-content>
-<ion-footer>
-    <ion-toolbar>
-        <ion-title class="ion-footer1">
-            <strong>
-                <h1>Duoc UC</h1>
-            </strong>
-        </ion-title>
-    </ion-toolbar>
-</ion-footer>

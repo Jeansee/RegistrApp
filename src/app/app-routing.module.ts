@@ -22,7 +22,11 @@ const routes: Routes = [
   {
     path: 'recuperar',
     loadChildren: () => import('./recuperar/recuperar.module').then( m => m.RecuperarPageModule)
+  },  {
+    path: 'qr',
+    loadChildren: () => import('./qr/qr.module').then( m => m.QrPageModule)
   },
+
 ];
 
 @NgModule({
