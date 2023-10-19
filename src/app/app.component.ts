@@ -11,7 +11,7 @@ export class AppComponent {
   }
 
   grabar_localstorage() {
-    // Genera un nombre único o secuencial (puedes personalizar esta lógica según tus necesidades)
+    // Genera un nombre único o secuencial
     const nombre = this.generarNombreUnico();
 
     let persona = {
@@ -21,7 +21,7 @@ export class AppComponent {
     localStorage.setItem("nombre", persona.nombre);
   }
 
-  // Función para generar un nombre único (puedes personalizar esta lógica)
+  // Función para generar un nombre único aleatorio
   generarNombreUnico() {
     // Genera un número aleatorio único usando un timestamp
     const timestamp = Date.now();
