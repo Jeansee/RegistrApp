@@ -16,6 +16,10 @@ export class HomePage implements OnInit {
     this.nombreUsuario = this.userService.getLoggedInUser();
   }
 
+  irComida(){
+    this.router.navigate(['/comida'])
+  }
+
   irqr(){
     this.router.navigate(['/qr']);
   }
