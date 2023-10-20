@@ -20,10 +20,12 @@ export class CosoGuard implements CanActivate {
       if(StoredUsername && StoredPassword){
         console.log("Ingreso de sesión exitoso");
         //se va a la página home
+        if (state.url !== '/home'){
         const navigationExtras: NavigationExtras = {
           state: { username: StoredUsername},
         }
         this.navCtrl.navigateForward('home', navigationExtras);
+      }
         return true;
       }else{
         console.log("Usuario o contraseña incorrecto");
