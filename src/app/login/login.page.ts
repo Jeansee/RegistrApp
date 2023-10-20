@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController, NavController } from '@ionic/angular';
-import { UserService } from '../user.service'; // Ajusta la ruta según la ubicación real
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -28,15 +28,12 @@ export class LoginPage implements OnInit {
 
   async ingresar() {
     const f = this.formularioLogin.value;
-    const storedUsername = localStorage.getItem('nombre'); // Usar 'nombre' para obtener el nombre de usuario
-    const storedPassword = localStorage.getItem('contrasena'); // Usar 'contrasena' para obtener la contraseña
-  
+    const storedUsername = localStorage.getItem('nombre');
+    const storedPassword = localStorage.getItem('contrasena');
+
     if (storedUsername && storedPassword) {
       if (storedUsername === f.nombre && storedPassword === f.contrasena) {
-        // Credenciales válidas, navegar a la página de inicio (home)
         this.navCtrl.navigateForward('/home');
-  
-        // Aquí puedes realizar otras acciones, como guardar un token
       } else {
         const alert = await this.alertController.create({
           header: 'Datos incorrectos',
@@ -49,23 +46,22 @@ export class LoginPage implements OnInit {
       console.log('No se encontraron credenciales en el LocalStorage');
     }
   }
-  
 
-  irRegistro(){
+  // Esta es la definición correcta de irRegistro
+  irRegistro() {
     console.log("Navegando a registro");
     this.navCtrl.navigateForward('/registro');
   }
 
-  // Restablecer la contraseña
-  recuperarContrasena(){
-    console.log("Navengado a recuperar");
+  // Esta es la definición correcta de recuperarContrasena
+  recuperarContrasena() {
+    console.log("Navegando a recuperar");
     this.navCtrl.navigateForward('/recuperar');
   }
 
-  // Generar un token aleatorio
   private generateRandomToken(): string {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const tokenLength = 32; // Longitud del token
+    const tokenLength = 32;
     let token = '';
 
     for (let i = 0; i < tokenLength; i++) {
