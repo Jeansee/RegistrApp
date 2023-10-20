@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service'; // Ajusta la ruta según la ubicación real
 
@@ -7,16 +7,36 @@ import { UserService } from '../user.service'; // Ajusta la ruta según la ubica
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage {
+export class LoginPage implements OnInit {
+  ngOnInit() {
+    this.token = this.generateRandomToken();
+  }
   constructor(private router: Router, private userService: UserService) { }
 
   nombre = '';
   contra = '';
   nuevaContrasena ='';
   confirmarContrasena = '';
+  token = '';
 
 
   iniciarSesion() {
+    const user1 = this.userService.getUser(this.nombre);
+
+  if (user1 && user1.password === this.contra) {
+    // Credenciales válidas, redirigir a la página de inicio (home)
+    this.router.navigate(['/home']);
+
+    // Guardar nombre y contraseña en el localStorage
+    localStorage.setItem('nombre', this.nombre);
+    localStorage.setItem('contrasena', this.contra);
+  } else {
+    // Manejar credenciales inválidas
+    console.log('Usuario o contraseña incorrectos');
+  }
+    /* Se guarda el token en el localstorage */
+    localStorage.setItem('token', this.token);
+
     const user = this.userService.getUser(this.nombre);
 
     if (user && user.password === this.contra) {
@@ -62,7 +82,18 @@ resetContrasena() {
   }
 }
 
-
+/* Se generará un token random */
+private generateRandomToken(): string {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const tokenLength = 32; // Longitud del token
+  let token = '';
   
+  for (let i = 0; i < tokenLength; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    token += characters.charAt(randomIndex);
+  }
+  
+  return token;
+}
 }
 
