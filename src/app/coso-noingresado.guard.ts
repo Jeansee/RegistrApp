@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 //restringe la entrada a página si no esta iniciado con un usuario
-export class NoIngresadoGuard implements CanActivate {
+export class CosoNoIngresadoGuard implements CanActivate {
 
   constructor(public navCtrl: NavController){}
 
