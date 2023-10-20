@@ -8,10 +8,15 @@ import { UserService } from '../user.service';
   styleUrls: ['./registro.page.scss'],
 })
 export class RegistroPage {
+  nombre: string = ''; // Propiedad para almacenar el nombre
+  contrasena: string = ''; // Propiedad para almacenar la contraseña
+
   constructor(private router: Router, private userService: UserService) {}
-  
-  registrarUsuario(nombre:string, contrasena:string) {
-    // Verifica si el usuario ya existe antes de agregarlo
+
+  registrarUsuario() {
+    // Obtiene los valores de nombre y contrasena directamente de las propiedades
+    const nombre = this.nombre;
+    const contrasena = this.contrasena;
     const existingUser = this.userService.getUser(nombre);
     if (!existingUser) {
       // Si no existe el usuario en el localStorage, lo almacenamos

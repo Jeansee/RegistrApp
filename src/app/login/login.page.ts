@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertController, NavController } from '@ionic/angular';
+import { UserService } from '../user.service'; // Ajusta la ruta según la ubicación real
 
 @Component({
   selector: 'app-login',
@@ -8,56 +9,57 @@ import { UserService } from '../user.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  ngOnInit() {
-    this.token = this.generateRandomToken();
+  formularioLogin: FormGroup;
+
+  constructor(
+    private navCtrl: NavController,
+    private fb: FormBuilder,
+    private userService: UserService,
+    private alertController: AlertController
+  ) {
+    this.formularioLogin = this.fb.group({
+      'nombre': ['', Validators.required],
+      'contrasena': ['', Validators.required]
+    });
   }
 
-  constructor(private router: Router, private userService: UserService) { }
+  ngOnInit() {
+  }
 
-  nombre = '';
-  contrasena = '';
-  nuevaContrasena = '';
-  confirmarContrasena = '';
-  token = '';
-
-  iniciarSesion() {
-    const user = this.userService.getUser(this.nombre);
-
-    if (user && user.password === this.contrasena) {
-      // Credenciales válidas, redirigir a la página de inicio (home)
-      localStorage.setItem('nombre', this.nombre);
-      localStorage.setItem('contrasena', this.contrasena);
-      this.router.navigate(['/home']);
+  async ingresar() {
+    const f = this.formularioLogin.value;
+    const storedUsername = localStorage.getItem('nombre'); // Usar 'nombre' para obtener el nombre de usuario
+    const storedPassword = localStorage.getItem('contrasena'); // Usar 'contrasena' para obtener la contraseña
+  
+    if (storedUsername && storedPassword) {
+      if (storedUsername === f.nombre && storedPassword === f.contrasena) {
+        // Credenciales válidas, navegar a la página de inicio (home)
+        this.navCtrl.navigateForward('/home');
+  
+        // Aquí puedes realizar otras acciones, como guardar un token
+      } else {
+        const alert = await this.alertController.create({
+          header: 'Datos incorrectos',
+          message: 'Los datos que ingresaste son incorrectos.',
+          buttons: ['Aceptar']
+        });
+        await alert.present();
+      }
     } else {
-      // Manejar credenciales inválidas, por ejemplo, mostrar un mensaje de error al usuario
-      console.log('Usuario o contraseña incorrectos');
+      console.log('No se encontraron credenciales en el LocalStorage');
     }
+  }
+  
+
+  irRegistro(){
+    console.log("Navegando a registro");
+    this.navCtrl.navigateForward('/registro');
   }
 
   // Restablecer la contraseña
-  resetContrasena() {
-    console.log('Nueva contraseña:', this.nuevaContrasena);
-    console.log('Confirmar contraseña:', this.confirmarContrasena);
-
-    if (this.nuevaContrasena === this.confirmarContrasena) {
-      console.log('Contraseñas coinciden');
-      this.userService.updatePassword(this.nombre, this.nuevaContrasena);
-      console.log('Contraseña actualizada');
-
-      // Redirige a la página de inicio de sesión después del restablecimiento
-      this.router.navigate(['/login']);
-    } else {
-      console.log('Las contraseñas no coinciden');
-    }
-  }
-
-  irRegistro() {
-    this.router.navigate(['/registro']);
-  }
-
-  recuperarContrasena() {
-    // Navega a la página de recuperar para tener una nueva contraseña
-    this.router.navigate(['/recuperar']);
+  recuperarContrasena(){
+    console.log("Navengado a recuperar");
+    this.navCtrl.navigateForward('/recuperar');
   }
 
   // Generar un token aleatorio
