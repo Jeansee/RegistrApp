@@ -42,8 +42,6 @@ export class LoginPage implements OnInit {
         });
         await alert.present();
       }
-    } else {
-      console.log('No se encontraron credenciales en el LocalStorage');
     }
   }
 
