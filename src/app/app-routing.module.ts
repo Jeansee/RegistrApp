@@ -26,7 +26,11 @@ const routes: Routes = [
   {
     path: 'qr',
     loadChildren: () => import('./qr/qr.module').then( m => m.QrPageModule)
+  },  {
+    path: 'comida',
+    loadChildren: () => import('./comida/comida.module').then( m => m.ComidaPageModule)
   },
+
 
 ];
 
