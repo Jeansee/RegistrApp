@@ -20,6 +20,11 @@ ion-content {
     padding-top: 40px;
     justify-content: space-between;
 
+  .user_back{
+    background: center;
+    background-color: white;
+  }
+
 
     .first_div {
       padding-top: 35px;
@@ -76,7 +81,7 @@ ion-content {
       margin-top: 6px;
       
       img{
-        width: 70px;
+        width: 75px;
       }
       ion-label{
         color: var(--ion-color-primary);
