@@ -1,30 +1,61 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service'; // Ajusta la ruta según la ubicación real
-import { Router, Navigation } from '@angular/router';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  constructor(private userService: UserService, private router : Router) { }
 
-  nombreUsuario: string = '';
+  
 
+  constructor(private router: Router, private alertController: AlertController, private ActivatedRoute: ActivatedRoute) { }
+
+  nombre: string = ''; 
+  nombreUsuario=localStorage.getItem('Nombre usuario');
+  
   ngOnInit() {
-    // Recuperar el nombre de usuario desde el servicio
-    this.nombreUsuario = this.userService.getLoggedInUser();
+    this.ActivatedRoute.queryParams.subscribe((params: any) => {
+      this.nombreUsuario = params.data;
+    });
   }
 
-  irComida(){
-    this.router.navigate(['/comida'])
+  irComida() {
+    this.router.navigate(['/comida']);
   }
 
-  irqr(){
+  irqr() {
     this.router.navigate(['/qr']);
   }
 
-  irlogin(){
-    this.router.navigate(['/login'])
+  irlogin() {
+    this.router.navigate(['/login']);
   }
+
+  cerrarSesion() {
+    this.pestania();
+    this.nombreUsuario = '';
+    localStorage.removeItem('userIngresado');
+  }
+
+  async pestania() {
+    const alert = await this.alertController.create({
+      header: 'Sesion cerrada',
+      subHeader: '',
+      message: 'La sesión fue cerrada con éxito',
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+  }
+
+  async llamartodo() {
+    this.cerrarSesion();
+    this.irlogin();
+  }
+
+  
 }

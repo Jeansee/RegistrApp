@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController, NavController } from '@ionic/angular';
-import { UserService } from '../user.service';
+import { Storage } from '@ionic/storage-angular';
+import { AlmacenamientoService } from '../almacenamiento.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,41 +11,49 @@ import { UserService } from '../user.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  formularioLogin: FormGroup;
+
+  username: any;
+  password: any;
 
   constructor(
     private navCtrl: NavController,
     private fb: FormBuilder,
-    private userService: UserService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private storage: Storage,
+    private almacena: AlmacenamientoService,
+    private router: Router
   ) {
-    this.formularioLogin = this.fb.group({
-      'nombre': ['', Validators.required],
-      'contrasena': ['', Validators.required]
-    });
+    this.username = localStorage.getItem('username');
+    this.username = localStorage.getItem('password')
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+
   }
 
-  async ingresar() {
-    const f = this.formularioLogin.value;
-    const storedUsername = localStorage.getItem('nombre');
-    const storedPassword = localStorage.getItem('contrasena');
+  async login() {
 
-    if (storedUsername && storedPassword) {
-      if (storedUsername === f.nombre && storedPassword === f.contrasena) {
-        this.navCtrl.navigateForward('/home');
-      } else {
-        const alert = await this.alertController.create({
-          header: 'Datos incorrectos',
-          message: 'Los datos que ingresaste son incorrectos.',
-          buttons: ['Aceptar']
-        });
-        await alert.present();
-      }
+    const usuario: string = this.username.trim();
+    const contra: string = this.password.trim();
+
+    const storedPassword = await this.almacena.get(usuario);
+
+    if (storedPassword && storedPassword === contra) {
+      console.log('Sesion iniciada correctamente')
+      localStorage.setItem('usuario', usuario);
+      localStorage.setItem('userIngresado', 'true');
+      this.router.navigate(['/home'], { queryParams: { data: this.username } })
+    } else {
+      this.pestania();
     }
   }
+
+  async validar() {
+    if (!this.username || !this.password){
+      this.mostrarAlerta();
+    }
+  }
+
 
   // Esta es la definición correcta de irRegistro
   irRegistro() {
@@ -52,21 +62,36 @@ export class LoginPage implements OnInit {
   }
 
   // Esta es la definición correcta de recuperarContrasena
-  recuperarContrasena() {
-    console.log("Navegando a recuperar");
-    this.navCtrl.navigateForward('/recuperar');
+  irOlvidar() {
+    console.log("navegando a recuperar")
+    this.router.navigate(['/recuperar']);
   }
 
-  private generateRandomToken(): string {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const tokenLength = 32;
-    let token = '';
+  async pestania() {
+    const alert = await this.alertController.create({
+      header: 'Error',
+      subHeader: '',
+      message: 'Usuario o contraseña incorrecto',
+      buttons: ['OK'],
+    });
 
-    for (let i = 0; i < tokenLength; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
-      token += characters.charAt(randomIndex);
-    }
-
-    return token;
+    await alert.present();
   }
+
+  async mostrarAlerta() {
+    const alert = await this.alertController.create({
+      header: "Error",
+      message: "Campos vacios",
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+  }
+
+  async llamartodo(){
+    this.login();
+    this.validar();
+  }
+
+
 }
