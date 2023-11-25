@@ -31,6 +31,10 @@ export class HomePage implements OnInit {
     this.router.navigate(['/qr']);
   }
 
+  irhorar() {
+    this.router.navigate(['/horario']);
+  }
+
   irlogin() {
     this.router.navigate(['/login']);
   }
