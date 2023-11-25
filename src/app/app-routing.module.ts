@@ -30,13 +30,11 @@ const routes: Routes = [
     canActivate:[CosoNoIngresadoGuard]
   },
   {
-    path: 'qr',
-    loadChildren: () => import('./qr/qr.module').then( m => m.QrPageModule)
+    path: 'camarita',
+    loadChildren: () => import('./camarita/camarita.module').then( m => m.CamaritaPageModule),
+    canActivate:[CosoGuard]
   },
-  {
-    path: 'comida',
-    loadChildren: () => import('./comida/comida.module').then( m => m.ComidaPageModule)
-  },
+
 
 ];
 

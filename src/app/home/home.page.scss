@@ -39,6 +39,12 @@ ion-content {
         font-size: 24px;
         color: white;
         font-weight: 600;
+        padding: 5px;
+      }
+
+      .tiempo{
+        padding-top: -100px;
+        color: yellow;
       }
     }
 
@@ -139,4 +145,7 @@ bounceInUp{
 
     -webkit-transform: translateY(0)
   }
+
+  
+
 }

@@ -4,6 +4,7 @@ import { AlertController, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 import { AlmacenamientoService } from '../almacenamiento.service';
 import { Router } from '@angular/router';
+import { ApitiempoService } from '../apitiempo.service';
 
 @Component({
   selector: 'app-login',
@@ -15,19 +16,27 @@ export class LoginPage implements OnInit {
   username: any;
   password: any;
 
+  data : any = {};
+  
+  clima: any[] = [];
+
   constructor(
     private navCtrl: NavController,
     private fb: FormBuilder,
     private alertController: AlertController,
     private storage: Storage,
     private almacena: AlmacenamientoService,
-    private router: Router
+    private router: Router,
+    private tiempoa : ApitiempoService
   ) {
     this.username = localStorage.getItem('username');
     this.username = localStorage.getItem('password')
   }
 
   async ngOnInit() {
+
+    
+    this.tiempo();
 
   }
 
@@ -88,6 +97,16 @@ export class LoginPage implements OnInit {
 
     await alert.present();
   }
+
+
+
+  tiempo(){
+    this.tiempoa.getClima().subscribe((data: any) =>{
+      this.clima = data;
+      console.log(this.clima);
+    })
+
+   }
 
 
 

@@ -14,6 +14,10 @@
                 <ion-label class="nombre">
                     {{nombreUsuario}}
                 </ion-label>
+                <br>
+                <ion-label *ngFor="let item of clima" class="tiempo">
+                    Temperatura de hoy: {{item.Temperature.Value}} °C
+                </ion-label>
             </div>
             <div class="user_back" [style.backgroundImage]="'url(assets/imagenes/avatar_person_icon.png)'">
             </div>
@@ -26,71 +30,22 @@
             <ion-grid fixed>
                 <ion-row>
                     <div class="col_div">
-                        <a (click)="irqr()"><img src="assets/imagenes/qrcode_icon.png"></a>
-                        <ion-label>Crear qr</ion-label>
-                    </div>
-                    <div class="col_div">
                         <img src="assets/imagenes/calendar_icon.png">
                         <ion-label>Horario</ion-label>
                     </div>
-
-                    <div class="col_div">
-                        <img src="assets/imagenes/calendar_date_icon.png">
-                        <ion-label>Asistencia</ion-label>
-                    </div>
                 </ion-row>
             </ion-grid>
 
             <ion-grid fixed>
                 <ion-row>
                     <div class="col_div">
-                        <img src="assets/imagenes/configuration_icon.png">
-                        <ion-label>Ajustes</ion-label>
-                    </div>
-
-                    <div class="col_div">
-                        <img src="assets/imagenes/scanner_icon.png">
+                        <a (click)="irScanner()"><img src="assets/imagenes/scanner_icon.png"></a>
                         <ion-label>Scaner</ion-label>
                     </div>
-                    
-                    <div class="col_div">
-                        <img src="assets/imagenes/notification_icon.png">
-                        <ion-label>Notificaciones</ion-label>
-                    </div>
                 </ion-row>
             </ion-grid>
-
             <ion-grid fixed>
                 <ion-row>
-                    <div class="col_div">
-                        <a (click)="irComida()"><img src="assets/imagenes/food_icon.png"></a>
-                        <ion-label>Comida</ion-label>
-                    </div>
-
-                    <div class="col_div">
-                        <img src="assets/imagenes/qrcode_icon.png">
-                        <ion-label>Prox.</ion-label>
-                    </div>
-
-                    <div class="col_div">
-                        <img src="assets/imagenes/qrcode_icon.png">
-                        <ion-label>Prox.</ion-label>
-                    </div>
-                </ion-row>
-            </ion-grid>
-
-            <ion-grid fixed>
-                <ion-row>
-                    <div class="col_div">
-                        <img src="assets/imagenes/qrcode_icon.png">
-                        <ion-label>Prox.</ion-label>
-                    </div>
-
-                    <div class="col_div">
-                        <img src="assets/imagenes/qrcode_icon.png">
-                        <ion-label>Prox.</ion-label>
-                    </div>
-
                     <div class="col_div">
                         <a (click)="llamartodo()"><img src="assets/imagenes/exit_icon.png"></a>
                         <ion-label>Cerrar Sesion</ion-label>

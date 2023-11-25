@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div id="container">
+    <div>
+      <video id="video" width="100%" autoplay></video>
+    </div>
+    <div>
+      <p> {{ decodedText }}</p>
+    </div>
+    <ion-button (click)="scan()">Scan QR Code</ion-button>
+  </div>
+</ion-content>
