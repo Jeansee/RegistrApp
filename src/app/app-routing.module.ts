@@ -36,7 +36,11 @@ const routes: Routes = [
   {
     path: 'comida',
     loadChildren: () => import('./comida/comida.module').then( m => m.ComidaPageModule)
+  },  {
+    path: 'horario',
+    loadChildren: () => import('./horario/horario.module').then( m => m.HorarioPageModule)
   },
+
 
 ];
 
