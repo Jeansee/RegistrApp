@@ -38,21 +38,22 @@ export class LoginPage implements OnInit {
 
     const storedPassword = await this.almacena.get(usuario);
 
-    if (storedPassword && storedPassword === contra) {
+
+
+    if (!this.username || !this.password) {
+      this.mostrarAlerta();
+    } else if (storedPassword && storedPassword === contra) {
       console.log('Sesion iniciada correctamente')
       localStorage.setItem('usuario', usuario);
       localStorage.setItem('userIngresado', 'true');
-      this.router.navigate(['/home'], { queryParams: { data: this.username } })
+      this.router.navigate(['/home'], { queryParams: { data: this.username } });
     } else {
       this.pestania();
     }
+
+ 
   }
 
-  async validar() {
-    if (!this.username || !this.password){
-      this.mostrarAlerta();
-    }
-  }
 
 
   // Esta es la definición correcta de irRegistro
@@ -88,10 +89,6 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
-  async llamartodo(){
-    this.login();
-    this.validar();
-  }
 
 
 }
