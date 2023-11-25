@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons class="btn-horario" slot="start">
+      <ion-back-button defaultHref="/home">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Horario de Clases
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let clase of clases">
+      <ion-label>
+        <h2>{{ clase.curso }}</h2>
+        <p>{{ clase.aula }}</p>
+        <p>{{ clase.dia }}, {{ clase.hora }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

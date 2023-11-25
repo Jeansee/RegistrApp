@@ -28,11 +28,9 @@ const routes: Routes = [
     path: 'recuperar',
     loadChildren: () => import('./recuperar/recuperar.module').then( m => m.RecuperarPageModule),
     canActivate:[CosoNoIngresadoGuard]
-  },
-  {
-    path: 'camarita',
-    loadChildren: () => import('./camarita/camarita.module').then( m => m.CamaritaPageModule),
-    canActivate:[CosoGuard]
+  },{
+    path: 'horario',
+    loadChildren: () => import('./horario/horario.module').then( m => m.HorarioPageModule)
   },
 
 
