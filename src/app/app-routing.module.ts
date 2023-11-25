@@ -30,8 +30,13 @@ const routes: Routes = [
     canActivate:[CosoNoIngresadoGuard]
   },{
     path: 'horario',
-    loadChildren: () => import('./horario/horario.module').then( m => m.HorarioPageModule)
-  },
+    loadChildren: () => import('./horario/horario.module').then( m => m.HorarioPageModule),
+    canActivate:[CosoGuard]
+  },{
+    path: 'camarita',
+    loadChildren: () => import ('./camarita/camarita.module').then (m => m.CamaritaPageModule),
+    canActivate:[CosoGuard]
+  }
 
 
 ];

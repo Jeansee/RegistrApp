@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-
-import { CosoNoingresadoGuard } from './coso-noingresado.guard';
+import { CosoNoIngresadoGuard } from './coso-noingresado.guard';
 
 describe('CosoNoingresadoGuard', () => {
   let guard: CosoNoingresadoGuard;
