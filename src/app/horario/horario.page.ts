@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
 
 @Component({
   selector: 'app-horario',
   templateUrl: './horario.page.html',
   styleUrls: ['./horario.page.scss'],
 })
+
 export class HorarioPage {
   clases: any[] = [];
 
@@ -16,11 +18,15 @@ export class HorarioPage {
   generarHorario() {
     // Aquí puedes llenar el arreglo 'clases' con la información de las clases
     this.clases = [
-      { curso: 'Matemáticas', aula: 'Aula 101', dia: 'Lunes', hora: '8:30 AM - 10:00 AM' },
-      { curso: 'Lenguaje', aula: 'Aula 102', dia: 'Martes', hora: '11:30 AM - 12:50 AM' },
-      { curso: 'Inglés', aula: 'Aula 103', dia: 'Miércoles', hora: '13:00 PM - 14:30 PM' },
-      { curso: 'Ciencias Naturales', aula: 'Aula 104', dia: 'Jueves', hora: '12:00 AM - 1:30 PM' },
-      // Se puede agregar más objetos con la información de otras clases
+      { Docente:'Profesor: German Barrientos', curso: 'Arquitectura', aula: ' Sala: Y407 ', dia: 'Martes', hora: '8:30 AM - 09:50 AM', aula2:'Sala Y407', dia2: 'Miercoles', hora2: '13:00 PM - 15:10 PM' },
+      { Docente:'Profesor: Yessica Bolivar', curso: 'Calidad de Software', aula: 'Sala: Y407', dia: 'Lunes', hora: '15:10 PM - 16:40 PM', aula2:'Sala Y409', dia2: 'Miercoles', hora2: '15:10 PM - 16:40 PM'},
+      { Docente:'Profesor: Nadia España', curso: 'Estadistica Descriptiva', aula: 'Sala: Y409', dia: 'Lunes', hora: '13:40 PM - 15:00 PM', aula2:'Sala Y409', dia2: 'Viernes', hora2: '08:30 AM - 09:50 AM'},
+      { Docente:'Profesor: Francisco Javier', curso: 'Programacion Aplicaciones Moviles', aula: 'Sala: Y409', dia: 'Lunes', hora: '10:40 AM - 12:10 PM', aula2:'Sala Y409', dia2: 'Miercoles', hora2: '15:10 PM - 16:40 PM'},
+      { Docente:'Profesor: Pablo Proinick', curso: 'Ingles Intermedio', aula: 'Sala: Y411', dia: 'Martes', hora: '11:30 AM - 13:40 pM', aula2:'Sala Y410', dia2: 'Miercoles', hora2: '10:00 AM - 11:20 AM'}
     ];
+  }
+
+  toggleAccordion(clase: any) {
+    clase.expanded = !clase.expanded;
   }
 }
