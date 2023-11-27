@@ -36,7 +36,11 @@ const routes: Routes = [
     path: 'camarita',
     loadChildren: () => import ('./camarita/camarita.module').then (m => m.CamaritaPageModule),
     canActivate:[CosoGuard]
+  },  {
+    path: 'asistencia',
+    loadChildren: () => import('./asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
   }
+
 
 
 ];
