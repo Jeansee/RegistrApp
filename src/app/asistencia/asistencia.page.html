@@ -1,28 +1,21 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Registro de Asistencia
+      Asistencia de clase
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list lines="full">
-    <ion-item>
-      <ion-label position="floating">Días totales de clases</ion-label>
-      <ion-input type="number" [(ngModel)]="totalDays"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Días faltados</ion-label>
-      <ion-input type="number" [(ngModel)]="absentDays"></ion-input>
-    </ion-item>
-
-    <ion-button expand="block" (click)="calcularPorcentaje()">Calcular</ion-button>
-
-    <ion-item *ngIf="percentage !== undefined">
-      <ion-label>Porcentaje de asistencia:</ion-label>
-      <ion-text>{{ percentage }}%</ion-text>
+  <ion-list>
+    <ion-item *ngFor="let clase of materia">
+      <ion-label>
+        <h2>{{ clase.curso }}</h2>
+        <p>{{ clase.Docente }}</p>
+        <p>Día: {{ clase.dia }}</p>
+        <p>Porcentaje de asistencia: {{ clase.porcentaje }}%</p>
+        <ion-icon *ngIf="clase.faltado" name="close-circle"></ion-icon>
+      </ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

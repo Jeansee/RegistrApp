@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { CosoGuard } from './coso.guard';
 import { CosoNoIngresadoGuard } from './coso-noingresado.guard';
 
+
 const routes: Routes = [
   {
     path: 'login',
@@ -36,9 +37,11 @@ const routes: Routes = [
     path: 'camarita',
     loadChildren: () => import ('./camarita/camarita.module').then (m => m.CamaritaPageModule),
     canActivate:[CosoGuard]
-  },  {
+  },
+  {
     path: 'asistencia',
-    loadChildren: () => import('./asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
+    loadChildren: () => import('./asistencia/asistencia.module').then( m => m.AsistenciaPageModule),
+    canActivate:[CosoGuard]
   }
 
 
