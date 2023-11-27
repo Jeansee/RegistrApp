@@ -20,6 +20,7 @@ export class HomePage implements OnInit {
   
   nombre: string = ''; 
   nombreUsuario=localStorage.getItem('Nombre usuario');
+  nombreSeccion: string = '';
   
   ngOnInit() {
     
@@ -27,7 +28,10 @@ export class HomePage implements OnInit {
 
     this.ActivatedRoute.queryParams.subscribe((params: any) => {
       this.nombreUsuario = params.data;
+
     });
+
+    this.generarNombreSeccion();
   }
 
   irasist() {
@@ -76,6 +80,17 @@ export class HomePage implements OnInit {
 
   }
 
+  generarNombreSeccion() {
+    // Generar tres números aleatorios entre 0 y 9
+    const numerosAleatorios = Math.floor(Math.random() * 10).toString() +
+                              Math.floor(Math.random() * 10).toString() +
+                              Math.floor(Math.random() * 10).toString();
+    
+    // Generar una letra aleatoria
+    const letraAleatoria = String.fromCharCode(97 + Math.floor(Math.random() * 26)); // Letra aleatoria minúscula
+    
+    // Crear el nombre de sección combinando los números y la letra con un guión
+    this.nombreSeccion = `${numerosAleatorios}-${letraAleatoria}`;
+  }
 
-  
 }
