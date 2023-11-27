@@ -1,21 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons class="btn-camara" slot="start">
+    <ion-buttons class="btn-horario" slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>
-      Scanner
-    </ion-title>
+    <ion-title>Escaner</ion-title>
   </ion-toolbar>
 </ion-header>
+
+
 <ion-content>
   <div id="container">
     <div>
       <video id="video" width="100%" autoplay></video>
     </div>
-    <div>
+    <div class="col_div">
+      <a (click)="scan()"><img src="assets/imagenes/scanner_icon.png"></a>
+      <ion-label>Scaner</ion-label>
+    </div>
+    <div class="Texto">
       <p> {{ decodedText }}</p>
     </div>
-    <ion-button (click)="scan()">Scan QR Code</ion-button>
   </div>
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BrowserMultiFormatReader, Result } from '@zxing/library';
-
+import { ActivatedRoute } from '@angular/router';
+import { ApitiempoService } from '../apitiempo.service';
 
 @Component({
   selector: 'app-camarita',
@@ -11,9 +12,17 @@ export class CamaritaPage implements OnInit, OnDestroy {
   decodedText: string = '';
   codeReader: BrowserMultiFormatReader = new BrowserMultiFormatReader(); // Inicializar aquí
 
-  constructor() { }
+  constructor(private ActivatedRoute: ActivatedRoute,private tiempoa : ApitiempoService) { }
+
+  clima: any[] = [];
+  nombre: string = ''; 
+  nombreUsuario=localStorage.getItem('Nombre usuario');
+  
 
   ngOnInit() {
+    this.ActivatedRoute.queryParams.subscribe((params: any) => {
+      this.nombreUsuario = params.data;
+    });
   }
 
   ngOnDestroy() {
