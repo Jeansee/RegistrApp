@@ -30,6 +30,9 @@ export class HomePage implements OnInit {
     });
   }
 
+  irasist() {
+    this.router.navigate(['/asistencia']);
+  }
 
   irhorar() {
     this.router.navigate(['/horario']);
