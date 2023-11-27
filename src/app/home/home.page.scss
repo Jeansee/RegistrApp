@@ -1,5 +1,5 @@
 ion-content {
-  --background: linear-gradient(to right, #002957, blue)
+  --background: #002D56
 }
 
 .main_content_div {
@@ -15,7 +15,7 @@ ion-content {
     padding: 20px;
     width: 100%;
     height: 260px;
-    background: linear-gradient (to right, blue, #002957);
+    background-color: #002D56;
     display: flex;
     padding-top: 40px;
     justify-content: space-between;
@@ -44,7 +44,7 @@ ion-content {
 
       .tiempo{
         padding-top: -100px;
-        color: yellow;
+        color: #FDB930;
       }
     }
 
